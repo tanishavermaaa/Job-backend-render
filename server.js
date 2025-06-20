@@ -20,6 +20,9 @@ app.use('/api/users', require('./routes/authRoutes'));
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/jobs', require('./routes/jobRoutes'));
 
+app.get('/health', (req, res) => {
+  res.status(200).send('Server is healthy!');
+});
 
 const PORT = 8080;
 app.listen(PORT, () => console.log(`Server running on ${PORT}`));
