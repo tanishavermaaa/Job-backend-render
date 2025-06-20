@@ -11,7 +11,7 @@ const app = express();
 
 connectDB();
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000', 'https://job-frontend-vercel.vercel.app],
     credentials: true
 }));
 app.use(express.json());
@@ -23,6 +23,10 @@ app.use('/api/jobs', require('./routes/jobRoutes'));
 app.get('/health', (req, res) => {
   res.status(200).send('Server is healthy!');
 });
+app.get('/api/test', (req, res) => {
+  res.send('✅ Backend is working!');
+});
 
-const PORT = 8080;
+
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log(`Server running on ${PORT}`));
