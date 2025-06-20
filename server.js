@@ -11,19 +11,19 @@ const app = express();
 
 connectDB();
 app.use(cors({
-    origin: ['http://localhost:3000', 'https://job-frontend-vercel.vercel.app'],
+    origin: ['https://job-frontend-vercel.onrender.com'],
     credentials: true
 }));
 app.use(express.json());
 
-app.use('/api/users', require('./routes/authRoutes')); 
-app.use('/api/auth', require('./routes/authRoutes'));
-app.use('/api/jobs', require('./routes/jobRoutes'));
+app.use('/users', require('./routes/authRoutes')); 
+app.use('/auth', require('./routes/authRoutes'));
+app.use('/jobs', require('./routes/jobRoutes'));
 
 app.get('/health', (req, res) => {
   res.status(200).send('Server is healthy!');
 });
-app.get('/api/test', (req, res) => {
+app.get('/test', (req, res) => {
   res.send('✅ Backend is working!');
 });
 
