@@ -9,7 +9,7 @@ const createJob = async (req, res) => {
 
   if (!company || !role) {
     return res.status(400).json({ message: "Company and Role are required" });
-  }
+  } 
 
   try {
     const job = new Job({
